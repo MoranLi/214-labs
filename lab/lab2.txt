@@ -1,0 +1,67 @@
+=========================================
+Solutions to Selected Questions in Lab 02
+=========================================
+
+----
+1(c)
+----
+
+bash-4.3$ ls -l file1?.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file10.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file11.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file12.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file13.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file14.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file15.txt
+
+alternative answer to 1(c):
+
+bash-4.3$ ls -l file1[012345].txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file10.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file11.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file12.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file13.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file14.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file15.txt
+
+alternative answer to 1(c):
+
+bash-4.3$ ls -l file1[0-5].txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file10.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file11.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file12.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file13.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file14.txt
+-rw-r--r-- 1 kusalik faculty 0 Sep 23 19:29 file15.txt
+
+----
+1(d)
+----
+
+bash-4.3$ file file[13469].txt
+file1.txt: empty
+file3.txt: empty
+file4.txt: empty
+file6.txt: empty
+file9.txt: empty
+
+----
+2(c)
+----
+
+bash-4.3$ cat my_name.txt fake_file.txt > standard_output.txt 2> standard_error.txt
+bash-4.3$ more standard_output.txt
+James Bond 007
+bash-4.3$ more standard_error.txt
+cat: fake_file.txt: No such file or directory
+
+----
+2(d)
+----
+
+bash-4.3$ rm standard_output.txt standard_error.txt
+bash-4.3$ cat my_name.txt fake_file.txt > standard_output.txt 2> /dev/null
+bash-4.3$ more standard_output.txt
+James Bond 007
+bash-4.3$ ls standard_error.txt
+ls: cannot access standard_error.txt: No such file or directory

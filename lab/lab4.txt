@@ -1,0 +1,127 @@
+=========================================
+Solutions to Selected Questions in Lab 04
+=========================================
+
+-----
+1 (a)
+-----
+
+command is 
+
+grep "^[A-Z][0-9][A-Z] [0-9][A-Z][0-9]$" <<< $POSTAL_CODE
+
+example:
+
+bash-4.3$ POSTAL_CODE="S7N 5C9"
+bash-4.3$ grep "^[A-Z][0-9][A-Z] [0-9][A-Z][0-9]$" <<< $POSTAL_CODE
+S7N 5C9
+bash-4.3$ POSTAL_CODE="90124"
+bash-4.3$ grep "^[A-Z][0-9][A-Z] [0-9][A-Z][0-9]$" <<< $POSTAL_CODE
+bash-4.3$
+bash-4.3$ grep -v "^[A-Z][0-9][A-Z] [0-9][A-Z][0-9]$" <<< $POSTAL_CODE
+90124
+bash-4.3$ POSTAL_CODE="contains S7N 5C9 as a postal code"
+bash-4.3$ grep "^[A-Z][0-9][A-Z] [0-9][A-Z][0-9]$" <<< $POSTAL_CODE
+bash-4.3$ grep -v "^[A-Z][0-9][A-Z] [0-9][A-Z][0-9]$" <<< $POSTAL_CODE
+contains S7N 5C9 as a postal code
+bash-4.3$ 
+
+the lab specification said to check cases such as the following
+
+bash-4.3$ POSTAL_CODE="junkS7N 5C9garbage"
+bash-4.3$ grep -v "^[A-Z][0-9][A-Z] [0-9][A-Z][0-9]$" <<< $POSTAL_CODE
+junkS7N 5C9garbage
+
+additional testing might include:
+
+bash-4.3$ POSTAL_CODE="first part is S7N and second part is 5C9"
+bash-4.3$ grep -v "[A-Z][0-9][A-Z] [0-9][A-Z][0-9]" <<< $POSTAL_CODE
+first part is S7N and second part is 5C9
+
+-------------
+Question 1(b)
+-------------
+
+bash-4.3$ grep '^[IO].*[a-z].*box$' mailinfo.txt
+Inbox
+Is a match box
+Outbox
+bash-4.3$ grep -v '^[IO].*[a-z].*box$' mailinfo.txt
+the Inbox
+Doesn't match
+INBOX
+Outbox1
+InbOX
+Ibox
+I box
+
+or 
+
+bash-4.3$ grep "^[IO].*[a-z].*box$" < mailinfo.txt
+Inbox
+Is a match box
+Outbox
+bash-4.3$ grep -v "^[IO].*[a-z].*box$" < mailinfo.txt
+the Inbox
+Doesn't match
+INBOX
+Outbox1
+InbOX
+Ibox
+I box
+
+-----
+1 (c)
+-----
+
+bash-4.3$ grep -c '^[IO].*[a-z].*box$' < mailinfo.txt
+3
+
+or 
+
+bash-4.3$ grep -c '^[IO].*[a-z].*box$' mailinfo.txt
+3
+
+-----
+2 (c)
+-----
+
+bash-4.3$ cut -f 1 -d : passwd | sort -r | head -1
+vcsa
+
+or 
+
+bash-4.3$ cut -f 1 -d : passwd | sort | tail -n -1
+vcsa
+
+-----
+3 (b)
+-----
+
+bash-4.3$ printf '$COLUMN1_HEADING\\t$COLUMN2_HEADING\\nJohn\\t10123456789\\n\n'
+$COLUMN1_HEADING\t$COLUMN2_HEADING\nJohn\t10123456789\n
+
+or 
+
+bash-4.3$ printf '$COLUMN1_HEADING\\t$COLUMN2_HEADING\\nJohn\\t10123456789\\n'
+$COLUMN1_HEADING\t$COLUMN2_HEADING\nJohn\t10123456789\nbash-4.3$
+
+-----
+5 (a)
+-----
+
+i.
+
+The comments in i. are superior because they mention the main functionality
+of cs(), which is to clear the screen.  This is useful and informative to the
+reader since the name of the function is so poorly chosen. 
+
+-----
+5 (b)
+-----
+
+ii.
+
+The comments in i. are false.  In particular, it can be the case that fewer
+than n characters from s2 are copied.
+

@@ -1,0 +1,78 @@
+=========================================
+Solutions to Selected Questions in Lab 03
+=========================================
+
+-
+1
+-
+
+tux3(21)% df /student
+Filesystem       1M-blocks    Used Available Use% Mounted on
+csfiles:/student   6192607 1486318   4391718  26% /tmp_mnt/student
+
+Therefore, /student on tuxworld comes from the server named "csfiles"
+
+-----
+2 (a)
+-----
+
+tux6(8)% mkdir 214lab3
+tux6(9)% cd 214lab3
+tux6(10)% mkdir dir1 dir2
+tux6(11)% cd dir1
+
+tux6(12)% cp /etc/passwd ../dir2
+
+or
+
+tux6(12)% cp /etc/passwd ../dir2/passwd
+
+-----
+3 (b)
+-----
+
+tux6(26)% cut -f 1 -d " " w.txt
+zzz101
+kusalik
+dfk576
+mdm239
+alm164
+
+-------------
+Question 3(d)
+-------------
+
+tux6(36)% sort -r -k 5 w1.txt
+alm164 pts/51 Fri14 16:50m 1.60s 1.60s -bash
+kusalik pts/5 06:56 5.00s 0.14s 0.04s w
+mdm239 pts/31 Tue19 3days 0.12s 0.12s -bash
+zzz101 pts/1 18Aug14 32days 0.00s 2:16 kdeinit4: kded4 [kdeinit] 
+dfk576 pts/18 12Sep14 0.00s 0.00s 0.00s /bin/bash /usr/bin/nxnode --sla
+
+or 
+
+tux6(37)% sort -r -k 5,5 w1.txt
+alm164 pts/51 Fri14 16:50m 1.60s 1.60s -bash
+kusalik pts/5 06:56 5.00s 0.14s 0.04s w
+mdm239 pts/31 Tue19 3days 0.12s 0.12s -bash
+zzz101 pts/1 18Aug14 32days 0.00s 2:16 kdeinit4: kded4 [kdeinit] 
+dfk576 pts/18 12Sep14 0.00s 0.00s 0.00s /bin/bash /usr/bin/nxnode --sla
+
+----------
+Question 4
+----------
+
+tux6(38)% sort usernames.txt > sorted_usernames.txt
+tux6(39)% diff usernames.txt sorted_usernames.txt
+18d17
+< nobody
+19a19
+> nobody
+
+The "diff" between the original file and the sorted file was not empty, so the original file was not in sorted (alphabetical) order.
+
+----------
+Question 6
+----------
+
+for ( i=0; i<arraySize; i++ ) {  array[i] = 1;}
